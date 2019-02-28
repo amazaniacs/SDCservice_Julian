@@ -70,7 +70,11 @@ Status: 200 OK
   },
 ]
 ```
-
+Errors
+```js
+Status: 400 badRequest
+Status: 404 notFound
+```
 #### CREATE
 Insert a new product.
 > POST /api/products
@@ -111,7 +115,11 @@ Status: 201 Created
   },
 ]
 ```
-##### PUT
+Errors
+```js
+Status: 400 badRequest
+```
+#### PUT
 Update a product.
 > PUT /api/products
 ```js
@@ -126,8 +134,12 @@ Status: 202 Accepted
   }
 ]
 ```
-
-##### DELETE
+Errors
+```js
+Status: 400 badRequest
+Status: 404 notFound
+```
+#### DELETE
 
 Delete a single entry
 
@@ -142,7 +154,11 @@ Status: 204 No Content
     "name": "camera"
 }
 ```
-
+Errors
+```js
+Status: 400 badRequest
+Status: 404 notFound
+```
 ## Development
 
 ### Installing Dependencies
