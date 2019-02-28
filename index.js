@@ -14,20 +14,16 @@ app.use(express.static(`${__dirname}/dist`));
 app.get('/api/bundle.js', (req, res) => {
   res.sendFile(`${__dirname}/dist/bundle.js`);
 });
-
 app.get('/api/bundle', (req, res) => {
   res.sendFile(`${__dirname}/dist/bundle.js`);
 });
-
-app.get('/api/products/:productId/', router.readRelationship);
-
 app.get('/products/:id', (req, res) => {
-  console.log('hit');
   res.sendFile(`${__dirname}/dist/index.html`);
 });
-
 app.get('*', (req, res) => {
   res.redirect('/products/1');
 });
+
+app.get('/api/products/:productId/', router.readRelationship);
 
 app.listen(3007, console.log('listening to 3007'));
