@@ -20,7 +20,8 @@
 
 1. [Usage](#Usage)
 2. [Requirements](#requirements)
-3. [Development](#development)
+3. [RESTAPI](#RESTAPI)
+4. [Development](#development)
 
 ## Usage
 
@@ -35,6 +36,112 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
 - npm 6.4.1
+
+
+## REST API
+#### READ
+Return a list of Sponsored Products
+> GET /api/products
+
+Response example
+```js
+Status: 200 OK
+[
+  {
+    "product_id": 001,
+    "name": "Backpack",
+    "is_prime": true,
+    "price": 10,
+    "stars": 5,
+  },
+  {
+    "product_id": 002,
+    "name": "Black Shirt",
+    "is_prime": true,
+    "price": 10,
+    "stars": 4,
+  },
+  {
+    "product_id": 003,
+    "name": "Full Metal Jacket",
+    "is_prime": true,
+    "price": 10,
+    "stars": 0,
+  },
+]
+```
+
+#### CREATE
+Insert a new product.
+> POST /api/products
+
+Input Example
+```js
+{
+  "product_id": 003,
+  "name": "Full Metal Jacket",
+  "is_prime": true,
+  "price": 10,
+}
+```
+Response example
+```js
+Status: 201 Created
+[
+  {
+    "product_id": 001,
+    "name": "Backpack",
+    "is_prime": true,
+    "price": 10,
+    "stars": 5,
+  },
+  {
+    "product_id": 002,
+    "name": "Black Shirt",
+    "is_prime": true,
+    "price": 10,
+    "stars": 4,
+  },
+  {
+    "product_id": 003,
+    "name": "Full Metal Jacket",
+    "is_prime": true,
+    "price": 10,
+    "stars": 0,
+  },
+]
+```
+##### PUT
+Update a product.
+> PUT /api/products
+```js
+Status: 202 Accepted
+[
+  {
+    "product_id": 001,
+    "name": "Full Metal Jacket",
+    "stars": 5,
+    "price": 10,
+    "is_prime": true,
+  }
+]
+```
+
+##### DELETE
+
+Delete a single entry
+
+> DELETE /api/products/:id/:name
+
+the :id and :name of the product to be deleted.
+
+```js
+Status: 204 No Content
+{
+    "product_id": 001,
+    "name": "camera"
+}
+```
 
 ## Development
 
