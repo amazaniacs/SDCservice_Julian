@@ -12,9 +12,9 @@
 
 ## Related Projects
 
-  - https://github.com/amazonians-110/add_to_cart-chris
-  - https://github.com/amazonians-110/product-reviews-victor
-  - https://github.com/amazonians-110/product-gallery-summary
+  - https://github.com/amazaniacs/SDCservice_TD
+  - hhttps://github.com/amazaniacs/SDCservice_Tim
+  - https://github.com/amazaniacs/SDCservice_Matt
 
 ## Table of Contents
 
@@ -39,6 +39,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 
 ## REST API
+
 #### READ
 Return a list of Sponsored Products
 > GET /api/products
