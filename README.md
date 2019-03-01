@@ -48,30 +48,33 @@ Response example
 Status: 200 OK
 [
   {
-    "product_id": 1,
-    "name": "Amazon Product 1",
-    "price": 88,
-    "reviews": 161,
-    "stars": 1,
-    "is_prime": true,
-    "image_url": "http://lorempixel.com/240/240/technics"
+  "product_id": 1,
+  "name": "Amazon Product 1",
+  "category": "beauty",
+  "price": 74,
+  "reviews": 66,
+  "stars": 4,
+  "is_prime": false,
+  "image_url": "http://lorempixel.com/240/240/technics"
   },
   {
     "product_id": 2,
     "name": "Amazon Product 2",
-    "price": 159,
-    "reviews": 111,
-    "stars": 3,
-    "is_prime": true,
+    "category": "outdoor",
+    "price": 102,
+    "reviews": 90,
+    "stars": 2,
+    "is_prime": false,
     "image_url": "http://lorempixel.com/240/240/technics"
   },
   ...
   {
     "product_id": 100,
-    "name": "Amazon Product 3",
-    "price": 50,
-    "reviews": 63,
-    "stars": 2,
+    "name": "Amazon Product 100",
+    "category": "electronics",
+    "price": 97,
+    "reviews": 52,
+    "stars": 5,
     "is_prime": false,
     "image_url": "http://lorempixel.com/240/240/technics"
   }
@@ -90,10 +93,11 @@ Status: 200 OK
 {
   "product_id": 2,
   "name": "Amazon Product 2",
-  "price": 159,
-  "reviews": 111,
-  "stars": 3,
-  "is_prime": true,
+  "category": "outdoor",
+  "price": 102,
+  "reviews": 90,
+  "stars": 2,
+  "is_prime": false,
   "image_url": "http://lorempixel.com/240/240/technics"
 }
 ```
@@ -114,10 +118,11 @@ Input Example
 {
   "product_id": 2,
   "name": "Amazon Product 2",
-  "price": 159,
-  "reviews": 111,
-  "stars": 3,
-  "is_prime": true,
+  "category": "outdoor",
+  "price": 102,
+  "reviews": 90,
+  "stars": 2,
+  "is_prime": false,
   "image_url": "http://lorempixel.com/240/240/technics"
 }
 ```
@@ -139,12 +144,13 @@ Given a parameter, update a product.
 ```js
 Status: 202 Accepted
 {
-  "product_id": 50,
-  "name": "Amazon Product 50",
-  "price": 99,
-  "reviews": 11,
-  "stars": 3,
-  "is_prime": true,
+  "product_id": 22,
+  "name": "Amazon Product 22",
+  "category": "outdoor",
+  "price": 102,
+  "reviews": 90,
+  "stars": 2,
+  "is_prime": false,
   "image_url": "http://lorempixel.com/240/240/technics"
 }
 ```
@@ -182,6 +188,7 @@ The following table defines the properties that appear in this resource:
 |:--|:--|
 | product_id | number |
 | name | string |
+| category | string |
 | price | number |
 | reviews | number |
 | stars | number |
