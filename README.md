@@ -49,26 +49,32 @@ Status: 200 OK
 [
   {
     "product_id": 1,
-    "name": "Backpack",
+    "name": "Amazon Product 1",
+    "price": 88,
+    "reviews": 161,
+    "stars": 1,
     "is_prime": true,
-    "price": 10,
-    "stars": 5,
+    "image_url": "http://lorempixel.com/240/240/technics"
   },
   {
     "product_id": 2,
-    "name": "Black Shirt",
+    "name": "Amazon Product 2",
+    "price": 159,
+    "reviews": 111,
+    "stars": 3,
     "is_prime": true,
-    "price": 10,
-    "stars": 4,
+    "image_url": "http://lorempixel.com/240/240/technics"
   },
-  ...,
+  ...
   {
     "product_id": 100,
-    "name": "Full Metal Jacket",
-    "is_prime": true,
-    "price": 10,
-    "stars": 0,
-  },
+    "name": "Amazon Product 3",
+    "price": 50,
+    "reviews": 63,
+    "stars": 2,
+    "is_prime": false,
+    "image_url": "http://lorempixel.com/240/240/technics"
+  }
 ]
 ```
 
@@ -82,11 +88,13 @@ Response example
 ```js
 Status: 200 OK
 {
-    "product_id": 88,
-    "name": "Full Metal Jacket",
-    "is_prime": true,
-    "price": 10,
-    "stars": 0,
+  "product_id": 2,
+  "name": "Amazon Product 2",
+  "price": 159,
+  "reviews": 111,
+  "stars": 3,
+  "is_prime": true,
+  "image_url": "http://lorempixel.com/240/240/technics"
 }
 ```
 
@@ -95,6 +103,8 @@ Errors
 Status: 400 badRequest
 Status: 404 notFound
 ```
+
+
 #### CREATE
 Insert a new product.
 > POST /api/products
@@ -102,43 +112,25 @@ Insert a new product.
 Input Example
 ```js
 {
-  "product_id": 3,
-  "name": "Full Metal Jacket",
+  "product_id": 2,
+  "name": "Amazon Product 2",
+  "price": 159,
+  "reviews": 111,
+  "stars": 3,
   "is_prime": true,
-  "price": 10,
+  "image_url": "http://lorempixel.com/240/240/technics"
 }
 ```
 Response example
 ```js
 Status: 201 Created
-[
-  {
-    "product_id": 1,
-    "name": "Backpack",
-    "is_prime": true,
-    "price": 10,
-    "stars": 5,
-  },
-  {
-    "product_id": 2,
-    "name": "Black Shirt",
-    "is_prime": true,
-    "price": 10,
-    "stars": 4,
-  },
-  {
-    "product_id": 3,
-    "name": "Full Metal Jacket",
-    "is_prime": true,
-    "price": 10,
-    "stars": 0,
-  },
-]
 ```
 Errors
 ```js
 Status: 400 badRequest
 ```
+
+
 #### PUT
 Given a parameter, update a product.
 > PUT /api/products/:id
@@ -146,15 +138,15 @@ Given a parameter, update a product.
 - id: number
 ```js
 Status: 202 Accepted
-[
-  {
-    "product_id": 88,
-    "name": "Full Cotton Jacket",
-    "stars": 5,
-    "price": 10,
-    "is_prime": true,
-  }
-]
+{
+  "product_id": 50,
+  "name": "Amazon Product 50",
+  "price": 99,
+  "reviews": 11,
+  "stars": 3,
+  "is_prime": true,
+  "image_url": "http://lorempixel.com/240/240/technics"
+}
 ```
 Errors
 ```js
@@ -172,8 +164,8 @@ the :id and :name of the product to be deleted.
 ```js
 Status: 204 No Content
 {
-    "product_id": 50,
-    "name": "Donkey"
+  "product_id": 2,
+  "name": "Amazon Product 2"
 }
 ```
 
@@ -182,9 +174,8 @@ Errors
 Status: 400 badRequest
 Status: 404 notFound
 ```
-## Resource Representation
+## Property Representation
 
-#### Properties
 The following table defines the properties that appear in this resource:
 
 | Properties | Typeof |
@@ -192,9 +183,7 @@ The following table defines the properties that appear in this resource:
 | product_id | number |
 | name | string |
 | price | number |
-| is_prime | boolean |
+| reviews | number |
 | stars | number |
-
-### Installing Dependencies
-
-none
+| is_prime | boolean |
+| image_url | string |
