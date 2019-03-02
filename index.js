@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const compression = require('compression');
-const router = require('./server/controllers/router.js');
+const { fetchRelated } = require('./server/controllers/database.js');
 
 const app = express();
 
@@ -24,6 +24,36 @@ app.get('*', (req, res) => {
   res.redirect('/products/1');
 });
 
-app.get('/api/products/:productId/', router.readRelationship);
+app.get('/api/products/:productId/', (req, res) => {
+  const id = req.params.productId;
+  fetchRelated(id)
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(503).send(err);
+    });
+});
+
+// GET method route
+app.get('/', (req, res) => {
+  res.send('GET request to the homepage');
+});
+
+// POST method route
+app.post('/', (req, res) => {
+  res.send('POST request to the homepage');
+});
+
+// PUT method route
+app.put('/', (req, res) => {
+  res.send('PUT request to the homepage');
+});
+
+// DELETE method route
+app.delete('/', (req, res) => {
+  res.send('DELETE request to the homepage');
+});
 
 app.listen(3007, console.log('listening to 3007'));
