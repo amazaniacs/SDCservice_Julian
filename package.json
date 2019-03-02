@@ -1,14 +1,14 @@
 {
   "name": "amazon-product-carousel",
   "version": "1.0.0",
-  "description": "Visual and functional clone of the amazon product ad carousel",
+  "description": "Amazon product ad carousel",
   "main": "index.js",
   "scripts": {
-    "seed": "node server/helpers/seed.js && echo 'database built'",
-    "dev-build": "mkdir dist; cp ./src/index.html ./dist/index.html && webpack -d --watch",
-    "dev-start": "nodemon",
-    "start": "webpack -p && cp ./src/index.html ./dist/index.html && node index.js",
-    "test": "jest"
+    "seed": "node server/helpers/seed.js",
+    "test": "jest",
+    "start": "nodemon index.js",
+    "react-dev": "webpack -d --watch",
+    "react-pro": "webpack -p"
   },
   "author": "Jujoco",
   "license": "ISC",
@@ -42,7 +42,6 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "html-webpack-plugin": "^3.2.0",
-    "knex": "^0.16.3",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "pg": "^7.8.0",
