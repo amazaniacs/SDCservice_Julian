@@ -1,4 +1,4 @@
-const database = require('../../config.js');
+const database = require('../controllers/database.js');
 
 const generateRelationships = (n, id) => {
   // have a target product
@@ -12,7 +12,6 @@ const generateRelationships = (n, id) => {
   }
   return results;
 };
-
 
 database.schema.dropTableIfExists('products_index')
   .then(() => database.schema.createTable('products_index', (table) => {

@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const compression = require('compression');
-const { fetchRelated } = require('./server/controllers/database.js');
+const db = require('./server/controllers/database.js');
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.get('*', (req, res) => {
 
 app.get('/api/products/:productId/', (req, res) => {
   const id = req.params.productId;
-  fetchRelated(id)
+  db(id)
     .then((data) => {
       res.status(200).send(data);
     })
