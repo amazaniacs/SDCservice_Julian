@@ -4,9 +4,9 @@
   "description": "Amazon product ad carousel",
   "main": "index.js",
   "scripts": {
-    "seed": "node server/helpers/seed.js",
+    "seed": "node db/helpers/seedCSV.js",
     "test": "jest",
-    "start": "nodemon index.js",
+    "start": "nodemon ./server/index.js",
     "react-dev": "webpack -d --watch",
     "react-pro": "webpack -p"
   },
@@ -42,6 +42,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "html-webpack-plugin": "^3.2.0",
+    "mongoose": "^5.4.17",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "pg": "^7.8.0",
