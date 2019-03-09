@@ -13,7 +13,7 @@ const Carousel = ({ products, scroll }) => (
     <div className={product_list}>
       {products
         ? products.map(product => <Product key={product.id} product={product} />)
-        : null }
+        : null}
     </div>
     <Button scroll={scroll} direction="right" />
   </div>
