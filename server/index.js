@@ -1,33 +1,37 @@
+require('newrelic');
 const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
 const cors = require('cors');
-// const compression = require('compression');
-
+const compression = require('compression');
 const { relatedProducts } = require('../db/models/queries.js');
 
 const app = express();
 
-app.use(morgan('tiny'));
-app.use(cors());
+app.use(compression());
 app.use(bodyParser.json());
+app.use(cors());
+app.use(morgan('tiny'));
 
 app.use(express.static(path.resolve(__dirname, '../public')));
-// app.use(compression());
 
 // GET method
 app.get('/products/:productId', (req, res) => {
   const id = req.params.productId;
   relatedProducts(id, (err, data) => {
     if (err) {
-      return err;
+      console.log(err);
+      res.status(404).send();
     }
-    console.log('OKAY data');
-    res.send(data.rows);
+    res.send(data);
   });
 });
-
+// redirect
+app.get('/:productId', (req, res) => {
+  const id = req.params.productId;
+  res.redirect(`/index.html?productID=${id}`);
+});
 // POST method
 app.post('/', (req, res) => {
   res.send('POST request to the homepage');
@@ -41,4 +45,4 @@ app.delete('/', (req, res) => {
   res.send('DELETE request to the homepage');
 });
 
-app.listen(3007, console.log('listening to 3007'));
+app.listen(3004, console.log('listening to 3004'));
