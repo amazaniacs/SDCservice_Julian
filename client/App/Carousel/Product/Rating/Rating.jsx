@@ -54,7 +54,7 @@ const Rating = ({ avgReview }) => {
   const fullStars = Math.floor(avgReview);
   for (let i = 0; i < Math.floor(fullStars); i += 1) {
     stars.push(
-      <svg height="20" width="20">
+      <svg height="20" width="20" key={i + 10}>
         {gradient}
         {starFill}
         {starOutline}
@@ -64,7 +64,7 @@ const Rating = ({ avgReview }) => {
   const halfStars = Math.ceil(avgReview % 1);
   for (let i = 0; i < halfStars; i += 1) {
     stars.push(
-      <svg height="20" width="20">
+      <svg height="20" width="20" key={i + 20}>
         {gradient}
         {halfFill}
         {starOutline}
@@ -74,7 +74,7 @@ const Rating = ({ avgReview }) => {
   const emptyStars = 5 - (fullStars + halfStars);
   for (let i = 0; i < emptyStars; i += 1) {
     stars.push(
-      <svg height="20" width="20">
+      <svg height="20" width="20" key={i + 30}>
         {starOutline}
       </svg>,
     );
