@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import Product from './Product/Product.jsx';
 import Button from './Button/Button.jsx';
 import { product_list, container } from './Carousel.css';
@@ -11,18 +11,16 @@ const Carousel = ({ products, scroll }) => (
 
     <Button scroll={scroll} direction="left" />
     <div className={product_list}>
-      {products
-        ? products.map(product => <Product key={product.id} product={product} />)
-        : null }
+      {products.map((product, i) => <Product key={i} product={product} />)}
     </div>
     <Button scroll={scroll} direction="right" />
   </div>
 );
 
-Carousel.propTypes = {
-  products: propTypes.arrayOf(propTypes.object).isRequired,
-  scroll: propTypes.func.isRequired,
-  // click: propTypes.func.isRequired,
-};
+// Carousel.propTypes = {
+//   products: propTypes.arrayOf(propTypes.object).isRequired,
+//   scroll: propTypes.func.isRequired,
+// click: propTypes.func.isRequired,
+// };
 
 export default Carousel;

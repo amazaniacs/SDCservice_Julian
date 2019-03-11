@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import { box, arrow } from './Button.css';
 
 const Button = ({ direction, scroll }) => (
@@ -12,9 +12,9 @@ const Button = ({ direction, scroll }) => (
   </button>
 );
 
-Button.propTypes = {
-  direction: propTypes.string.isRequired,
-  scroll: propTypes.func.isRequired,
-};
+// Button.propTypes = {
+//   direction: propTypes.string.isRequired,
+//   scroll: propTypes.func.isRequired,
+// };
 
 export default Button;

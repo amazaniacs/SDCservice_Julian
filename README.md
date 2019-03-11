@@ -1,6 +1,5 @@
 # Product Advertisement Carousels
 
-> This service aims to clone the visual and functional style of Amazon.com's
   product carousel modules. The key features to be created are:
   * Dynamic links to other products
   * Responsiveness to changing browser width, and mobile screens
@@ -12,16 +11,16 @@
 
 ## Related Projects
 
-  - https://github.com/amazonians-110/add_to_cart-chris
-  - https://github.com/amazonians-110/product-reviews-victor
-  - https://github.com/amazonians-110/product-gallery-summary
+  - https://github.com/amazaniacs/SDCservice_TD
+  - https://github.com/amazaniacs/SDCservice_Tim
+  - https://github.com/amazaniacs/SDCservice_Matt
 
 ## Table of Contents
 
-1. [Usage](#Usage)
+1. [Usage](#usage)
 2. [Requirements](#requirements)
-3. [RESTAPI](#RESTAPI)
-4. [Development](#development)
+3. [RESTAPI](#restapi)
+4. [Property Representation](#propertyrepresentation)
 
 ## Usage
 
@@ -39,8 +38,9 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 
 ## REST API
+
 #### READ
-Return a list of Sponsored Products
+Return a list of the top 100 highest rated Sponsored Products
 > GET /api/products
 
 Response example
@@ -48,33 +48,67 @@ Response example
 Status: 200 OK
 [
   {
-    "product_id": 001,
-    "name": "Backpack",
-    "is_prime": true,
-    "price": 10,
+  "product_id": 1,
+  "name": "Amazon Product 1",
+  "category": "beauty",
+  "price": 74,
+  "reviews": 66,
+  "stars": 4,
+  "is_prime": false,
+  "image_url": "http://lorempixel.com/240/240/technics"
+  },
+  {
+    "product_id": 2,
+    "name": "Amazon Product 2",
+    "category": "outdoor",
+    "price": 102,
+    "reviews": 90,
+    "stars": 2,
+    "is_prime": false,
+    "image_url": "http://lorempixel.com/240/240/technics"
+  },
+  ...
+  {
+    "product_id": 100,
+    "name": "Amazon Product 100",
+    "category": "electronics",
+    "price": 97,
+    "reviews": 52,
     "stars": 5,
-  },
-  {
-    "product_id": 002,
-    "name": "Black Shirt",
-    "is_prime": true,
-    "price": 10,
-    "stars": 4,
-  },
-  {
-    "product_id": 003,
-    "name": "Full Metal Jacket",
-    "is_prime": true,
-    "price": 10,
-    "stars": 0,
-  },
+    "is_prime": false,
+    "image_url": "http://lorempixel.com/240/240/technics"
+  }
 ]
 ```
+
+Giving a parameter, return a single product.
+> GET /api/products/:id
+
+- id: number
+
+Response example
+
+```js
+Status: 200 OK
+{
+  "product_id": 2,
+  "name": "Amazon Product 2",
+  "category": "outdoor",
+  "price": 102,
+  "reviews": 90,
+  "stars": 2,
+  "is_prime": false,
+  "image_url": "http://lorempixel.com/240/240/technics"
+}
+```
+
 Errors
 ```js
 Status: 400 badRequest
 Status: 404 notFound
 ```
+
+
 #### CREATE
 Insert a new product.
 > POST /api/products
@@ -82,57 +116,43 @@ Insert a new product.
 Input Example
 ```js
 {
-  "product_id": 003,
-  "name": "Full Metal Jacket",
-  "is_prime": true,
-  "price": 10,
+  "product_id": 2,
+  "name": "Amazon Product 2",
+  "category": "outdoor",
+  "price": 102,
+  "reviews": 90,
+  "stars": 2,
+  "is_prime": false,
+  "image_url": "http://lorempixel.com/240/240/technics"
 }
 ```
 Response example
 ```js
 Status: 201 Created
-[
-  {
-    "product_id": 001,
-    "name": "Backpack",
-    "is_prime": true,
-    "price": 10,
-    "stars": 5,
-  },
-  {
-    "product_id": 002,
-    "name": "Black Shirt",
-    "is_prime": true,
-    "price": 10,
-    "stars": 4,
-  },
-  {
-    "product_id": 003,
-    "name": "Full Metal Jacket",
-    "is_prime": true,
-    "price": 10,
-    "stars": 0,
-  },
-]
 ```
 Errors
 ```js
 Status: 400 badRequest
 ```
+
+
 #### PUT
-Update a product.
-> PUT /api/products
+Given a parameter, update a product.
+> PUT /api/products/:id
+
+- id: number
 ```js
 Status: 202 Accepted
-[
-  {
-    "product_id": 001,
-    "name": "Full Metal Jacket",
-    "stars": 5,
-    "price": 10,
-    "is_prime": true,
-  }
-]
+{
+  "product_id": 22,
+  "name": "Amazon Product 22",
+  "category": "outdoor",
+  "price": 102,
+  "reviews": 90,
+  "stars": 2,
+  "is_prime": false,
+  "image_url": "http://lorempixel.com/240/240/technics"
+}
 ```
 Errors
 ```js
@@ -150,17 +170,27 @@ the :id and :name of the product to be deleted.
 ```js
 Status: 204 No Content
 {
-    "product_id": 001,
-    "name": "camera"
+  "product_id": 2,
+  "name": "Amazon Product 2"
 }
 ```
+
 Errors
 ```js
 Status: 400 badRequest
 Status: 404 notFound
 ```
-## Development
+## Property Representation
 
-### Installing Dependencies
+The following table defines the properties that appear in this resource:
 
-none
+| Properties | Typeof |
+|:--|:--|
+| product_id | number |
+| name | string |
+| category | string |
+| price | number |
+| reviews | number |
+| stars | number |
+| is_prime | boolean |
+| image_url | string |
