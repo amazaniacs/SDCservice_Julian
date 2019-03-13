@@ -6,3 +6,4 @@ artillery.yml
 bundle.js
 newrelic.js
 *.log
+*.txt

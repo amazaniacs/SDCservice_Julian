@@ -8,7 +8,7 @@ const compression = require('compression');
 const { relatedProducts } = require('../db/models/queries.js');
 
 const app = express();
-
+const port = 3004;
 app.use(compression());
 app.use(bodyParser.json());
 app.use(cors());
@@ -45,4 +45,4 @@ app.delete('/', (req, res) => {
   res.send('DELETE request to the homepage');
 });
 
-app.listen(3004, console.log('listening to 3004'));
+app.listen(port, console.log(`listening to ${port}`));
